@@ -1,0 +1,171 @@
+# 1. Ask why we are here.
+
+*This is a quick reminder about why we are here, who our
+customers are, and why we decided to do this project in the
+first place.*
+
+I am my own customer. I decided to do this project because I want to upgrade my income.
+That is. Simple and honest.
+
+I see it in such manner:
+
+If I want to increase my income I should create personal brand. 
+And blog is the easiest way to do it. Also blog has an additional features
+like helps to save and structure information. It can be very useful in future.
+
+
+# 2. Create an elevator pitch.
+*If we had thirty seconds and two sentences to describe our
+project, what would we say?*
+
+- For me
+- who wants to build personal brand
+- the su0.io 
+- is a professional blog
+- that helps build personal brand
+- Unlike standart blogging engines and social networks
+- our product 
+  - Is unique
+  - Can be modified an customized the way I need
+
+
+# 3. Design a product box.
+
+*If we were flipping through a magazine and we saw an adver-
+tisement for our product or service, what would it say, and,
+more importantly, would we buy it?*
+
+TBD =)
+
+
+# 4. Create a NOT list.
+
+*It’s pretty clear what we want to do on this project. Let’s be
+even clearer and show what we are not doing.*
+
+This is **NOT**:
+
+1. **A personal blog**
+   Though I want to create personal blog, I thonk that it should be another platform with the same engine.
+2. **A collective blog like habr.com etc**
+   This is my personal brand. If I want to create habr.com or r/programming concurrent I should use another platform.
+
+
+# 5. Meet your neighbors.
+
+*Our project community is always bigger than we think. Why
+don’t we invite them over for coffee and introduce ourselves?*
+
+I've discussed my idea with several people. Though I did not 
+share they point of view on technology, I was helpful to build
+an understanding os possible variants.
+
+
+# 6. Show the solution.
+
+*Let’s draw the high-level blueprints of the technical architec-
+ture to make sure we are all thinking of the same thing.*
+
+I've started attempts to create my blog a long time ago, but my 
+perfectionism always messed it up. I have 3 started blog projects
+but no blog. 
+
+So now I decided to go "full agile" and deliver product as fast as possible.
+
+At the moment I write this plan I've deployed "Hello World" static site (insert link)
+with Ansible, and this is the halfway.
+
+So my plan is follow:
+
+1. Create template and use Jekyll to build static site.
+2. Set up automatic deploy of Jekyll.
+3. Build React blog with all features I want.
+
+This is more roadmap than detailed plan, but first two steps seems to be not so big so 
+I think at that moment this is enough.
+
+
+# 7. Ask what keeps us up at night.
+
+*Some of the things that happen on projects are downright
+scary. But talking about them, and what we can do to avoid
+them, can make them less scary.*
+
+This part is about risk management. 
+I see folowing risks:
+
+1. **Diconnection of russian Internet segment from world Internet.**
+   That is unlikely risk but I can loose all my data and prepaid servers. 
+   I must do:
+     1. Backup all my data once a period of time (day probably will be enough).
+     2. Do not pay for more than a month ahead for my infrastructure.
+   So that risk is not that bad at all in scope of my blog.
+
+2. **I have no much expirience in frontend.**
+   I decided to build MVP in Jekyll and it seems easy enough. 
+   So in the worst case scenario I will have a Jekyll blog which is not the best
+   but good enough.
+
+3. **I spend too much time on my blog engine.**
+   I should set strict time bounds and be ready to fallback at more simple solution.
+
+4. **My blog will ruin my career.**
+   I must not write here controversial or political posts and only describe my
+   experiance as a professional developer. If I want to write something than not represent
+   me as a developer I should use another platform. In that boundaries I think I can take 
+   that risk. After all if you try and fail you are more experienced than someone who never
+   tryed. This is by the way more of content risks than project risks.
+
+5. **Legal issues.**
+   The same arguments as in paragraph 4.
+
+
+# 8. Size it up.
+
+*Is this thing a three-, six-, or nine-month project?*
+
+1. Build a layout for Jekill is one or two evening project.
+2. Set up a building pipeline and automatic deploy is one-three evening project.
+3. The rest needs a better understanding and further thoughts. 
+   I will be add that section later ore create another post with it.
+
+
+# 9. Be clear on what’s going to give.
+
+*Projects have levers like time, scope, budget, and quality.
+What’s most and least important for this project at this time?*
+
+1. **Time**
+   - I want my Jekyll-based solution be production ready by 24.12.2019
+   - I want my React-based solution be MVP ready by 01.02.2020, but that time can vary.
+
+2. **Scope**
+   I have clear scope for Jekyll based solution.
+
+3. **Budget**
+   6$ a month is my maximum for supporting my blog
+
+4. **Quality**
+   There is no good enough in quality lever. 
+   My blog represent me as IT professional so it **must** be the best
+   quality I can provide.
+
+
+# 10. Show what it’s going to take.
+
+*How long is it going to take? How much will it cost?*
+
+## Time
+
+Jekyll based solution by 24.12.2019. React based solution: ???
+
+## Time budget
+
+Because I am my own customer and developer there is no money budget on development, only time budget.
+Time budget is:
+  - Up to 5 evenings or approximately 10 hours of work for Jekyll-based solution
+  - React solution - ???
+
+## Infrastructure support
+
+6$/month (5$ for small VPS and 20% Russian VAT.) + .io domain name is my maximum at this point.
