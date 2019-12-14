@@ -1,4 +1,8 @@
-# 1. Ask why we are here.
+---
+layout: default
+title: Planning
+---
+## 1. Ask why we are here.
 
 *This is a quick reminder about why we are here, who our
 customers are, and why we decided to do this project in the
@@ -14,7 +18,7 @@ And blog is the easiest way to do it. Also blog has an additional features
 like helps to save and structure information. It can be very useful in future.
 
 
-# 2. Create an elevator pitch.
+## 2. Create an elevator pitch.
 *If we had thirty seconds and two sentences to describe our
 project, what would we say?*
 
@@ -29,7 +33,7 @@ project, what would we say?*
   - Can be modified an customized the way I need
 
 
-# 3. Design a product box.
+## 3. Design a product box.
 
 *If we were flipping through a magazine and we saw an adver-
 tisement for our product or service, what would it say, and,
@@ -38,7 +42,7 @@ more importantly, would we buy it?*
 TBD =)
 
 
-# 4. Create a NOT list.
+## 4. Create a NOT list.
 
 *It’s pretty clear what we want to do on this project. Let’s be
 even clearer and show what we are not doing.*
@@ -51,7 +55,7 @@ This is **NOT**:
    This is my personal brand. If I want to create habr.com or r/programming concurrent I should use another platform.
 
 
-# 5. Meet your neighbors.
+## 5. Meet your neighbors.
 
 *Our project community is always bigger than we think. Why
 don’t we invite them over for coffee and introduce ourselves?*
@@ -61,7 +65,7 @@ share they point of view on technology, I was helpful to build
 an understanding os possible variants.
 
 
-# 6. Show the solution.
+## 6. Show the solution.
 
 *Let’s draw the high-level blueprints of the technical architec-
 ture to make sure we are all thinking of the same thing.*
@@ -85,7 +89,7 @@ This is more roadmap than detailed plan, but first two steps seems to be not so 
 I think at that moment this is enough.
 
 
-# 7. Ask what keeps us up at night.
+## 7. Ask what keeps us up at night.
 
 *Some of the things that happen on projects are downright
 scary. But talking about them, and what we can do to avoid
@@ -120,7 +124,7 @@ I see folowing risks:
    The same arguments as in paragraph 4.
 
 
-# 8. Size it up.
+## 8. Size it up.
 
 *Is this thing a three-, six-, or nine-month project?*
 
@@ -130,7 +134,7 @@ I see folowing risks:
    I will be add that section later ore create another post with it.
 
 
-# 9. Be clear on what’s going to give.
+## 9. Be clear on what’s going to give.
 
 *Projects have levers like time, scope, budget, and quality.
 What’s most and least important for this project at this time?*
@@ -151,21 +155,21 @@ What’s most and least important for this project at this time?*
    quality I can provide.
 
 
-# 10. Show what it’s going to take.
+## 10. Show what it’s going to take.
 
 *How long is it going to take? How much will it cost?*
 
-## Time
+### Time
 
 Jekyll based solution by 24.12.2019. React based solution: ???
 
-## Time budget
+### Time budget
 
 Because I am my own customer and developer there is no money budget on development, only time budget.
 Time budget is:
   - Up to 5 evenings or approximately 10 hours of work for Jekyll-based solution
   - React solution - ???
 
-## Infrastructure support
+### Infrastructure support
 
 6$/month (5$ for small VPS and 20% Russian VAT.) + .io domain name is my maximum at this point.
