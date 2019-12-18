@@ -1,0 +1,16 @@
+# Makefile for all stuff
+
+cwd := $(shell pwd)
+jekyll_version := 3.8
+
+build:
+	docker run --rm --volume="$(cwd):/srv/jekyll" -it jekyll/jekyll:$(jekyll_version) jekyll build
+
+check: build
+	docker run -v "$(cwd)/_site:/mounted-site" 18fgsa/html-proofer /mounted-site --disable-external
+	# docker run --rm --volume="$(cwd):/srv/jekyll" -it jekyll/jekyll:$(jekyll_version) jekyll doctor
+
+serve: check
+	docker run --rm --volume="$(cwd):/srv/jekyll" -p 4000:4000 -it jekyll/jekyll:$(jekyll_version) jekyll serve
+
+#package: TBD
