@@ -3,7 +3,7 @@ layout: default
 title: Second planning attempt
 ---
 
-After some deep thoughts and a little grain of depression I've discovered that I am not really like my plan from [previouse post](/2019/12/14/planning.html).
+After some deep thoughts and a little grain of depression I've discovered that I am don't really like my plan from [previous post](/2019/12/14/planning.html).
 
 So here I want to check all paragraphs and change the things I don't like.
 
