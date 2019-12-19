@@ -1,12 +1,15 @@
 language: minimal
 
-script: mkdir _site && make package
+before_script:
+    - export PACKAGE_SUFFIX=$(date --utc +'%Y%m%d_%H%M%S')
+
+script:
+    - mkdir _site && make package package_suffix=${PACKAGE_SUFFIX}
 
 before_deploy:
     - git config --local user.name "Kirill Sulim"
     - git config --local user.email "kirillsulim@gmail.com"
-    - export TRAVIS_TAG=${TRAVIS_TAG:-$(date --utc +'%Y%m%d_%H%M%S')}
-    - git tag $TRAVIS_TAG
+    - git tag ${PACKAGE_SUFFIX}
 
 deploy:
     provider: releases
