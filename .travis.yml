@@ -1,6 +1,6 @@
 language: minimal
 
-script: make package
+script: mkdir _site && make package
 
 deploy:
     provider: releases
