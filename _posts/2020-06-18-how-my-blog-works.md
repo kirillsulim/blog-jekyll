@@ -269,6 +269,7 @@ And ansible playbook to install all gears:
   - name: Start blog-updater.timer
     systemd: 
       state: started 
+      enabled: yes
       name: blog-updater.timer 
       daemon_reload: yes
 
