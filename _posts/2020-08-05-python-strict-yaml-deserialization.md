@@ -205,7 +205,7 @@ I didn't find a quick way to resolve it. And I did want to add tags to my yaml s
 
 ## Solution with marshmallow
 
-I found recommendation to use marshmallow to parse dict generated fron JSON object. 
+I found recommendation to use [marshmallow](https://github.com/marshmallow-code/marshmallow) to parse dict generated fron JSON object. 
 I decided that these cases are the same as mine only uses JSON instead of YAML. 
 And so I tried to use `class_schema` generator for dataclass schema:
 
