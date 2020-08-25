@@ -6,7 +6,7 @@ html_proofer_version := latest
 package_suffix ?= $(shell date --utc +%Y%m%d_%H%M%S)
 
 build:
-	docker run --rm --volume="$(cwd):/srv/jekyll" -it jekyll/jekyll:$(jekyll_version) jekyll build
+	docker run --rm --volume="$(cwd):/srv/jekyll" -it jekyll/jekyll:$(jekyll_version) jekyll build --verbose
 
 check: build
 	docker run -v "$(cwd)/_site:/mounted-site" 18fgsa/html-proofer:$(html_proofer_version) /mounted-site --disable-external
