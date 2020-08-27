@@ -3,6 +3,8 @@ layout: default
 title: React blog project planning part 2
 ---
 
+Let's start with decomposition.
+
 ## Decomposition
 
 I decomposed my project into following user stories
