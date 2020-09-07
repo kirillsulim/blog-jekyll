@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "One man scrum. React blog. Iteration 1: planning"
+title: "One man scrum. React blog. Iteration 1: planning."
 ---
 
 For the first iteration I will take story:
