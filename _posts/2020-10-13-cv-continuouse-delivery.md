@@ -172,12 +172,8 @@ To support such behavior I had to use `Union[str, MultilangStr]` for any `Multil
 To get rendered data I use folowing recursive function:
 
 ```python
-def _is_simple_type(obj: Any) -> bool:
-    return obj is None or isinstance(obj, (str, date, bool, int, float))
-
-
 def _resolve_lang_and_profiled_strings(obj: Any, lang: str, profiles: Set[str]) -> Any:
-    if _is_simple_type(obj):
+    if obj is None or isinstance(obj, (str, date, bool, int, float)):
         return obj
     elif isinstance(obj, Iterable):
         return obj.__class__(filter(lambda o: o is not None, map(lambda it: _resolve_lang_and_profiled_strings(it, lang, profiles), obj)))
@@ -207,7 +203,7 @@ def _resolve_lang_and_profiled_strings(obj: Any, lang: str, profiles: Set[str]) 
 
 ## Dogebuild
 
-Dogebuild is general purpose build system.
+Dogebuild is [general purpose build system](https://github.com/dogebuild/dogebuild).
 Dogebuild is designed to be some kind of gradle analog for C++ build.
 But its plugin system allow you to use it for any build process.
 And [make mode](https://dogebuild.readthedocs.io/en/latest/make-mode/) allow you to skip plugin creation and just use tasks for simple builds.
@@ -256,6 +252,80 @@ branches:
   only:
   - master
 ```
+
+### Commiting to github
+
+I would like to my CV be commited at my [easter repo on github](https://github.com/kirillsulim/kirillsulim/) so link to my CV is available at my profile.
+To make this happen I use following dogebuild task:
+
+
+```python
+@task(depends=["render_md"])
+def commit_md_to_github(debug, md_en):
+    if len(md_en) != 1:
+        raise Exception(f"Incorrect artifact list md_en {md_en}")
+
+    repo_dir = build_dir / "github"
+    repo_dir.mkdir(exist_ok=True, parents=True)
+
+    with TemporaryDirectory(dir=repo_dir) as tmp_dir:
+        repo = Repo.clone_from(f"https://{github_user}:{github_token}@github.com/kirillsulim/kirillsulim", tmp_dir, depth=1)
+        repo_cv_file = Path(repo.working_tree_dir) / "cv.md"
+        copy(md_en[0], repo_cv_file)
+
+        repo.config_writer() \
+            .set_value("user", "name", git_user_name) \
+            .set_value("user", "email", git_user_email) \
+            .release()
+
+        repo.git.add(".")
+
+        if repo.is_dirty():
+            repo.git.commit("-m", "Automatic CV update")
+            if not debug:
+                repo.git.push()
+```
+
+With [GitPython](https://github.com/gitpython-developers/GitPython) I clone my easter repo to temp directory, add rendered .md file with CV and if there is changes commit it and push to github.
+
+
+### Releasing to github
+
+To release builded .pdf files to github I use folowing dogebuild task:
+
+```python
+@task(depends=["render_pdf"])
+def release_pdf(debug: bool, pdf: List[Path]):
+    if len(pdf) == 0:
+        raise Exception("No artifacts to release")
+
+    g = Github(github_user, github_token)
+    cv_repo = g.get_repo("kirillsulim/cv")
+
+    build_time = datetime.now(timezone.utc)
+
+    sha = Repo(".").head.commit.hexsha
+    tag = build_time.strftime("%Y%m%d_%H%M%S")
+    cv_repo.create_git_tag(tag, tag, sha, "commit")
+
+    rel_name = datetime.now(timezone.utc).strftime("%Y %b %d %H:%M:%S %Z")
+    rel_message = f"CV pdf builded at {rel_name}"
+
+    release = cv_repo.create_git_release(tag, rel_name, rel_message, draft=True)
+
+    for pdf in pdf:
+        path = str(pdf)
+        name = slugify(pdf.stem) + "." + pdf.suffix
+        label = str(pdf.name)
+        release.upload_asset(path, name=name, label=label, content_type="application/pdf")
+
+    release.update_release(release.title, release.body, draft=False)
+```
+
+This task required more fine work and is slightly more complicated.
+I use [PyGithub](https://github.com/PyGithub/PyGithub) to call github API from python code.
+I generate tag based on current date and time, push taht tag to main repo, create draft release associated with taht tag,
+publish generated pdf files as release assets (some name tweaking for russian file name is required) and finaly publish my release.
 
 
 ## The bad part
