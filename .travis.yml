@@ -1,19 +1,18 @@
 language: minimal
-
 before_script:
     - export PACKAGE_SUFFIX=$(date --utc +'%Y%m%d_%H%M%S')
-
 script:
     - mkdir _site && make package package_suffix=${PACKAGE_SUFFIX}
-
 before_deploy:
     - git config --local user.name "Kirill Sulim"
     - git config --local user.email "kirillsulim@gmail.com"
     - git tag ${PACKAGE_SUFFIX}
-
 deploy:
     provider: releases
     api_key: ${GITHUB_OAUTH_TOKEN}
     file_glob: true
     file: "*.tar.gz"
     skip_cleanup: true
+branches:
+  only:
+  - master
