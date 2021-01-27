@@ -100,13 +100,14 @@ and I have got:
 ```
 
 Yaml loaded just fine, but it is a dict.
-No problem, I can pass it as `**args` constructor and...
+No problem, I can pass it as `**args` constructor:
 
 ```python
-BattleStationConfig(processor={'core_count': 8, 'manufacturer': 'Intel'}, memory_gb=8, led_color='red')
+parsed_config = BattleStationConfig(**loaded)
+pprint(parsed_config)
 ```
 
-and result is:
+and result will be:
 
 ```
 BattleStationConfig(processor={'core_count': 8, 'manufacturer': 'Intel'}, memory_gb=8, led_color='red')
