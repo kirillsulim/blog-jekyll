@@ -7,9 +7,9 @@ title: Strict YAML deserialization with marshmallow
 
 - I want to read some not so simple config from .yaml file. 
 - I have config structure described as dataclasses.
-- I want to all type cheks have been performed and in case of invalid data exception will be raised.
+- I want to all type checks have been performed and in case of invalid data exception will be raised.
 
-So basicly I want something like
+So basically I want something like
 
 ```python
 def strict_load_yaml(yaml: str, loaded_type: Type[Any]):
@@ -66,7 +66,7 @@ class BattleStationConfig:
 
 ## Solution that didn't work
 
-That is very common patternt, right?
+This is a very common pattern, right?
 It must be very easy. 
 Just import standard yaml library and problem solved?
 
@@ -99,7 +99,7 @@ and I have got:
  'processor': {'core_count': 8, 'manufacturer': 'Intel'}}
 ```
 
-Yaml loaded just fine, but it is dict. 
+Yaml loaded just fine, but it is a dict.
 No problem, I can pass it as `**args` constructor and...
 
 ```python
@@ -115,11 +115,11 @@ BattleStationConfig(processor={'core_count': 8, 'manufacturer': 'Intel'}, memory
 Wow! Easy! But... Wait. Is processor field a dict? Damn it.
 
 Python don't perform type checking at constructor and do not parse `Processor` class.
-Well, time to go to stackowerflow.
+Well, this is the time to go to stackowerflow.
 
 ## Solution that required yaml tags and almost works
 
-I read stackowerflow answers and PyYaml documentation and fild out that you can mark your yaml doc with tags for types. 
+I've read stackowerflow answers and PyYaml documentation and have found out that you can mark your yaml doc with tags for types.
 Your classes must be descendants of `YAMLObject` and so my `config_with_tag.py` will look like this:
 
 ```python
@@ -201,11 +201,11 @@ Will lead to:
 TypeError: metaclass conflict: the metaclass of a derived class must be a (non-strict) subclass of the metaclasses of all its bases
 ```
 
-I didn't find a quick way to resolve it. And I did want to add tags to my yaml so I decided to keep looking for a solution.
+I didn't find a quick way to resolve it. And I did want to add tags to my yaml, so I've decided to keep looking for a solution.
 
 ## Solution with marshmallow
 
-I found recommendation to use [marshmallow](https://github.com/marshmallow-code/marshmallow) to parse dict generated fron JSON object. 
+I found a recommendation to use [marshmallow](https://github.com/marshmallow-code/marshmallow) to parse dict generated from JSON object.
 I decided that these cases are the same as mine only uses JSON instead of YAML. 
 And so I tried to use `class_schema` generator for dataclass schema:
 
@@ -252,14 +252,14 @@ memory_gb: 8
 led_color: RED
 ```
 
-And I will get my ideally desererialized object:
+And I will get my ideally deserialized object:
 
 ```
 BattleStationConfig(processor=BattleStationConfig.Processor(core_count=8, manufacturer='Intel'), memory_gb=8, led_color=<Color.RED: 'red'>)
 ```
 
 But I felt there was a way to use my original yaml. 
-So I've explored marshmallow documentation and found folowing lines:
+So I've explored marshmallow documentation and found following lines:
 
 > Setting `by_value=True`. This will cause both dumping and loading to use the value of the enum.
 
@@ -271,7 +271,7 @@ class BattleStationConfig:
     led_color: Optional[Color] = field(default=None, metadata={"by_value": True})
 ```
 
-And I will get parsed object from my original yaml.
+And I will get the object parsed from my original yaml.
 
 ## Magic function
 
@@ -287,7 +287,7 @@ This function can require additional set up for dataclass but solve my problem a
 
 ## Some words about ForwardRef
 
-If you define your dataclasees with forward reference (string with class name) marshmallow can be confused and didn't parse your classes.
+If you define your dataclasses with forward reference (string with class name) marshmallow can be confused and didn't parse your classes.
 
 For example this configuration
 
